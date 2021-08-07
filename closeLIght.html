@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熄灯游戏</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+
+        .container {
+            background-color: #fff;
+            max-width: 1080px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            margin: 0 auto;
+            padding: 1rem 0;
+            letter-spacing: .25rem;
+            text-indent: .25rem;
+            width: fit-content;
+        }
+
+        #game {
+            margin: 1rem auto;
+            width: fit-content;
+        }
+
+        td {
+            height: 3rem;
+            width: 3rem;
+            transition: background .25s linear;
+        }
+
+        td[light="true"] {
+            background-color: #42a5f5;
+        }
+
+        td[light="false"] {
+            background-color: rgb(145, 145, 145);
+        }
+
+        #btnGroup {
+            margin: 1rem 0;
+        }
+
+        #btnGroup button {
+            border: none;
+            background-color: #42a5f5;
+            border-radius: 7.5px;
+            height: 2rem;
+            width: 3.5rem;
+            color: #f5f5f7;
+            cursor: pointer;
+            font-weight: 800;
+            margin: 0 .25rem;
+        }
+
+        #btnGroup button:active,
+        #btnGroup button:hover {
+            opacity: .77;
+        }
+
+        #btnGroup button:focus {
+            outline: none;
+        }
+
+        .role {
+            width: fit-content;
+            padding: 1rem;
+            border: 2px dashed #00a1d6;
+            margin: 0 auto;
+            margin-top: 3rem;
+        }
+
+        .copy {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: small;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00a1d6;
+        }
+
+        a:hover {
+            text-decoration: underline solid #00a1d6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>熄灯游戏</h1>
+        <small>游戏根据UP主陈抱一 视频：<a
+                href="https://www.bilibili.com/video/BV1s3411r7ps?spm_id_from=333.851.dynamic.content.click">【开箱】我被人机打爆了！三次！</a>
+            设计而来</small>
+        <div id="game">
+
+        </div>
+        <small>请点击下方按钮开始游戏或重置游戏</small>
+        <div id="btnGroup">
+
+        </div>
+        <div class="role">
+            <h2>游戏规则</h2>
+            <p>选择游戏难度后，5*5的格子上将会点亮一部分格子，您需要把格子灭掉即可。</p>
+            <p>格子消除方法：点击一个格子，这个格子自身以及它的上下左右的格子将会颜色相反。</p>
+            <p>注意：每个布局只能玩一次，不可重置</p>
+        </div>
+    </div>
+    <div class="copy">&copy;2021 <a href="https://jniantic.cn" target="_blank">经年思维</a> . 版权所有</div>
+    <script src="closeLight.js"></script>
+</body>
+
+</html>
