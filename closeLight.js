@@ -138,7 +138,7 @@ var game = new Game(0);
 game.init();
 
 var btnGroupDom = document.getElementById("btnGroup");
-var btnGroup = [{ name: "简单", func: () => { game = new Game(1); game.init(); } }, { name: "中等", func: () => { game = new Game(3); game.init(); } }, { name: "困难", func: () => { game = new Game(5); game.init(); } }]
+var btnGroup = [{ name: "简单", func: () => { game = new Game(1); game.init(); } }, { name: "中等", func: () => { game = new Game(3); game.init(); } }, { name: "困难", func: () => { game = new Game(5); game.init(); }}, { name: "特困", func: () => { game = new Game(10); game.init(); } }, { name: "地狱", func: () => { game = new Game(15); game.init(); } }]
 for (let i = 0; i < btnGroup.length; i++) {
     let button = document.createElement('button');
     button.textContent = btnGroup[i].name
