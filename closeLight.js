@@ -6,6 +6,8 @@ function Game(level) {
     this.arr = [];
     this.level = level;
     this.randomArr = [];
+    // 计时
+    this.sec = 0;
 }
 
 Game.prototype.create = function () {
@@ -39,7 +41,13 @@ Game.prototype.create = function () {
 Game.prototype.init = function () {
     // 创建面板
     this.create();
+    // 随机出题
     this.random();
+    // 开始计时
+    if(this.level!=0){
+        clearInterval(itv)
+        this.timing();
+    }
 }
 
 /**
@@ -102,9 +110,26 @@ Game.prototype.judge = function () {
         }
     }
     if (lightSum == 0) {
-        alert("您赢了")
+        // 结束计时
+        clearInterval(itv);
+        // 弹出信息
+        alert("恭喜您赢了！用时"+this.sec+"秒");
     }
 }
+
+/**
+ * 游戏计时
+ */
+Game.prototype.timing = function(){
+    itv = setInterval(()=>{
+        this.sec = ++this.sec;
+        var dom = document.getElementById('time');
+        var str = '您已使用<span id="sec">'+ this.sec + '</span>秒'
+        dom.innerHTML = str;
+    },1000)
+    
+}
+
 
 // 每个方块
 function Block(row, col) {
@@ -137,6 +162,9 @@ Block.prototype.changeStatus = function () {
 var game = new Game(0);
 game.init();
 
+// 计时器
+var itv;
+
 var btnGroupDom = document.getElementById("btnGroup");
 var btnGroup = [{ name: "简单", func: () => { game = new Game(1); game.init(); } }, { name: "中等", func: () => { game = new Game(3); game.init(); } }, { name: "困难", func: () => { game = new Game(5); game.init(); }}, { name: "特困", func: () => { game = new Game(10); game.init(); } }, { name: "地狱", func: () => { game = new Game(15); game.init(); } }]
 for (let i = 0; i < btnGroup.length; i++) {
@@ -145,4 +173,3 @@ for (let i = 0; i < btnGroup.length; i++) {
     button.addEventListener('mousedown', btnGroup[i].func)
     btnGroupDom.appendChild(button)
 }
-
